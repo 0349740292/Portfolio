@@ -10,7 +10,6 @@
 <div class="scene">
   <div class="book">
 
-   
     <div class="page active" id="cover">
       <h1>MON PORTFOLIO</h1>
       <p>Ramiarinambinina Tiavina Claudino</p>
@@ -19,9 +18,8 @@
       </div>
     </div>
 
-    
     <div class="page" id="about">
-      <h2>À propos</h2>
+      <h2 class="animated-text">À propos</h2>
 
       <div class="img-wrapper">
         <img src="A.jpg" class="profile-img">
@@ -34,7 +32,130 @@
         NOM : RAMIARINAMBININA <br>
         PRENOM : TIAVINA CLAUDINO <br>
         ADRESSE : AMBATOLAHY FIANARANTSOA <br>
-        Diplôme : BACC D 2025 / Centre : BETROKA
+        Diplôme : BACC D 2025 / Centre : BETROKA <br>
+        École / Institut : EMIT DA2I <br>
+        Niveau : L1
+      </p>
+
+      <h3>Compétences</h3>
+
+      <div class="skill">
+        <p>HTML / CSS</p>
+        <div class="skill-bar">
+          <div class="skill-level html-css"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p>JavaScript</p>
+        <div class="skill-bar">
+          <div class="skill-level javascript"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p>Python</p>
+        <div class="skill-bar">
+          <div class="skill-level python"></div>
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <button class="btn secondary" onclick="prevPage()">Retour</button>
+        <button class="btn" onclick="nextPage()">Suivant</button>
+      </div>
+    </div>
+
+    <div class="page" id="languages">
+      <h2>Langues & Hobbies</h2>
+
+      <h3>Langues</h3>
+      <div class="skill">
+        <p>Français</p>
+        <div class="skill-bar">
+          <div class="skill-level french"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p>Anglais</p>
+        <div class="skill-bar">
+          <div class="skill-level english"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p>Malagasy</p>
+        <div class="skill-bar">
+          <div class="skill-level malagasy"></div>
+        </div>
+      </div>
+
+      <h3>Hobbies</h3>
+      <ul>
+        <li>Musique</li>
+        <li>Programmation</li>
+        <li>Dessin</li>
+        <li>Sport</li>
+      </ul>
+
+      <div class="btn-container">
+        <button class="btn secondary" onclick="prevPage()">Retour</button>
+        <button class="btn" onclick="nextPage()">Suivant</button>
+      </div>
+    </div>
+
+    <div class="page" id="contact">
+      <h2>Contact</h2>
+
+      <p>
+        <strong>Nom Facebook :</strong> 
+        <a href="https://www.facebook.com/rc.navi.ah" target="_blank">RAMIARINAMBININA TIAVINA CLAUDINO</a>
+      </p>
+
+      <p>
+        <strong>Adresse email :</strong> 
+        <a href="mailto:rtiavinaclaudino@gmail.com">rtiavinaclaudino@gmail.com</a>
+      </p>
+
+      <p>
+        <strong>WhatsApp :</strong> 
+        <a href="https://wa.me/261339220255" target="_blank">0339220255</a>
+      </p>
+
+      <div class="btn-container">
+        <button class="btn secondary" onclick="prevPage()">Retour</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let pages = document.querySelectorAll(".page");
+let current = 0;
+
+function showPage(index){
+  pages.forEach(page => page.classList.remove("active"));
+  pages[index].classList.add("active");
+  current = index;
+}
+
+function nextPage(){
+  if(current < pages.length - 1){
+    showPage(current + 1);
+  }
+}
+
+function prevPage(){
+  if(current > 0){
+    showPage(current - 1);
+  }
+}
+</script>
+
+</body>
+</html>        Diplôme : BACC D 2025 / Centre : BETROKA
       </p>
 
       <h3>Compétences</h3>

@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #3b1f16, #120907);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, serif;
+  color: #fff3e0;
+  overflow: hidden;
+}
+
+.scene { perspective: 2000px; position: relative; }
+.book {
+  width: 480px;
+  height: 640px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  z-index: 2;
+  box-shadow: 0 0 30px #d7a86e55, 0 0 60px #d7a86e33;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #3b1f16, #120907);
+  border-radius: 12px;
+  padding: 25px;
+  box-sizing: border-box;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  opacity: 0;
+  transform: rotateY(60deg) scale(0.95);
+  transform-origin: left;
+  backface-visibility: hidden;
+  transition: all 0.6s ease;
+  overflow-y: auto;
+}
+.page.active { display: flex; opacity: 1; transform: rotateY(0deg) scale(1); animation: pageEnter 0.8s ease forwards; }
+
+#cover h1 {
+  font-size: 2.5em;
+  background: linear-gradient(90deg, #ffd966, #f0c67f, #ffd966);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px #ffd96688, 0 0 15px #f0c67f55;
+  text-align: center;
+  animation: bounceSlide 1s ease forwards, glowingText 2s ease-in-out infinite alternate;
+}
+#cover p { font-size:1.2em; margin-top:10px; text-align:center; }
+
+.btn-container { display:flex; justify-content:space-between; margin-top:auto; }
+.btn {
+  padding:10px 20px;
+  background: linear-gradient(45deg,#6d4c41,#3e2723);
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  transition: all 0.3s ease;
+}
+.btn:hover { transform:scale(1.08); box-shadow:0 0 20px #d7a86e,0 0 40px #d7a86e55; }
+.secondary { background:#8d6e63; }
+
+.skill { margin-bottom:20px; }
+.skill p { font-weight:bold; font-size:0.95em; display:flex; align-items:center; }
+.flag { margin-right:8px; font-size:1.2em; }
+
+.skill-bar { width:100%; height:15px; background:#3a2a20; border-radius:8px; overflow:hidden; }
+.skill-level {
+  height:100%;
+  width:0;
+  border-radius:8px;
+  background: linear-gradient(90deg,#d9a066,#f0c67f);
+  transition: width 1.5s ease-in-out;
+}
+.page.active .skill-level { animation: fillSkill 1.5s ease forwards, glow 2s infinite alternate; }
+.skill-level.html-css { --skill-width: 80%; }
+.skill-level.javascript { --skill-width: 0%; }
+.skill-level.python { --skill-width: 0%; }
+.skill-level.french { --skill-width: 50%; }
+.skill-level.english { --skill-width: 10%; }
+.skill-level.malagasy { --skill-width: 70%; }
+
+/* Profile Image & Halo */
+.img-wrapper { position:relative; width:180px; height:180px; margin:20px auto; }
+.profile-img {
+  width:160px; height:160px; border-radius:50%;
+  border:5px solid #d9a066;
+  box-shadow:0 0 15px #d9a06655;
+  transform: scale(1); opacity:1; transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.profile-img:hover { transform: scale(1.1) rotate(2deg); box-shadow:0 0 30px #f0c67faa,0 0 50px #d9a06666; }
+
+.halo { position:absolute; top:50%; left:50%; border-radius:50%; transform:translate(-50%,-50%) scale(1); opacity:1; }
+.halo1 { width:180px;height:180px; background:conic-gradient(#d9a06633,#f0c67f33,#d9a06633,#f0c67f33); animation:rotateHalo 6s linear infinite; z-index:1; }
+.halo2 { width:200px;height:200px; background:conic-gradient(#d9a06622,#f0c67f22,#d9a06622,#f0c67f22); animation:rotateHaloReverse 8s linear infinite; opacity:0.6; z-index:0; }
+.halo3 { width:220px;height:220px; background:conic-gradient(#d9a06611,#f0c67f11,#d9a06611,#f0c67f11); animation:rotateHalo 10s linear infinite; opacity:0.4; z-index:0; }
+
+/* Animations */
+@keyframes pageEnter { from{transform:rotateY(90deg);opacity:0;} to{transform:rotateY(0deg);opacity:1;} }
+@keyframes bounceSlide {0%{transform:translateY(-50px);opacity:0;}60%{transform:translateY(10px);opacity:1;}100%{transform:translateY(0);} }
+@keyframes glowingText { from{text-shadow:0 0 8px #ffd96688,0 0 15px #f0c67f55;} to{text-shadow:0 0 15px #ffd966ff,0 0 25px #f0c67fff;} }
+@keyframes fillSkill { from{width:0;} to{width:var(--skill-width);} }
+@keyframes glow { from{box-shadow:0 0 5px #d7a86e;} to{box-shadow:0 0 20px #d7a86e;} }
+@keyframes rotateHalo {from{transform:translate(-50%,-50%) rotate(0deg);} to{transform:translate(-50%,-50%) rotate(360deg);} }
+@keyframes rotateHaloReverse {from{transform:translate(-50%,-50%) rotate(360deg);} to{transform:translate(-50%,-50%) rotate(0deg);} }
